@@ -1,0 +1,32 @@
+  // WRITE YOUR CODE HERE
+    int max = 0;
+    int one = 0;
+    int currmax = 0;
+// find no. of one 
+    for(int i = 0;i<n;i++){
+        if(arr[i] == 1){
+            one++;
+        }
+    }
+   // change "1" to '-1'  and '0' to '1'
+    for(int i = 0;i<n;i++){
+        if(arr[i] == 1){
+            arr[i]=-1;
+        }
+        else{
+            arr[i]=1;
+        }
+    }
+    // find maxi. sum subarray by kadane algorithm
+    for(int i =0;i<n;i++){
+        currmax+=arr[i];
+        if(max<currmax){
+            max=currmax;
+        }
+        if(currmax< 0){
+            currmax=0;
+        }
+    }
+    // add total of subarry and no, of one
+    int result = one +max;
+    return result;
